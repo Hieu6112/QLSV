@@ -1,0 +1,64 @@
+﻿@model QLSV.Areas.Admin.Models.KhoaHoc
+
+@{
+    ViewBag.Title = "Create";
+    Layout = null;
+}
+
+@using (Html.BeginForm("Create", "NganhHoc", FormMethod.Post))
+{
+    <div class="Create">
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaKH, htmlAttributes: new { @class = "control-label col-md-2 " })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MaKH, new { htmlAttributes = new { @class = "form-control ", required = "required" } })
+                @Html.ValidationMessageFor(model => model.MaKH, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.TenKH, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TenKH, new { htmlAttributes = new { @class = "form-control ", required = "required" } })
+                @Html.ValidationMessageFor(model => model.TenKH, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.namBatDau, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.namBatDau, new { htmlAttributes = new { @class = "form-control ", required = "required" } })
+                @Html.ValidationMessageFor(model => model.namBatDau, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.namKetThuc, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.namKetThuc, new { htmlAttributes = new { @class = "form-control ", required = "required" } })
+                @Html.ValidationMessageFor(model => model.namKetThuc, "", new { @class = "text-danger" })
+            </div>
+
+            @Html.LabelFor(model => model.MaHDT, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div>
+                    @Html.DropDownList("MaHDT", (List<SelectListItem>)ViewBag.countrydrop, "chọn hệ đào tạo", new { @class = "form-control" })
+                </div>
+                @*@Html.ValidationMessageFor(model => model.MaHDT, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="reset" value="Reset" class="btn btn-info" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<script>
+    $(document).ready(function () {
+        $('.select2').select2();
+    });
+</script>

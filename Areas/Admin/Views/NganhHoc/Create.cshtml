@@ -1,0 +1,52 @@
+﻿@model QLSV.Areas.Admin.Models.NganhHoc
+
+@{
+    ViewBag.Title = "Create";
+    Layout = null;
+}
+
+@using (Html.BeginForm("Create", "NganhHoc", FormMethod.Post))
+    {
+        <div class="Create">
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.maNganhHoc, htmlAttributes: new { @class = "control-label col-md-2 " })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.maNganhHoc, new { htmlAttributes = new { @class = "form-control ", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.maNganhHoc, "", new { @class = "text-danger" })
+                </div>
+
+                @Html.LabelFor(model => model.tenNganhHoc, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.tenNganhHoc, new { htmlAttributes = new { @class = "form-control ", required = "required" } })
+                    @Html.ValidationMessageFor(model => model.tenNganhHoc, "", new { @class = "text-danger" })
+                </div>
+
+                @Html.LabelFor(model => model.maKhoa, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div>
+                    @Html.DropDownList("maKhoa", (List<SelectListItem>)ViewBag.countrydrop, "chọn khoa", new {@class = "form-control" })
+                </div>
+                @*@Html.ValidationMessageFor(model => model.maKhoa, "", new { @class = "text-danger" })*@
+            </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <input type="reset" value="Reset" class="btn btn-info" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+<script>
+    $(document).ready(function () {
+        $('.select2').select2();
+    });
+</script>

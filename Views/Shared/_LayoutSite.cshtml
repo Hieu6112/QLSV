@@ -1,0 +1,16 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@Page.Title</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+
+    @RenderSection("head", required: false)
+</head>
+<body>
+    @RenderBody()
+
+
+    @RenderSection("footer", required: false)
+</body>
+</html>
